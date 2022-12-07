@@ -21,11 +21,21 @@ def _pass_through(single_field: bool):
         return lambda *args: list(args)
 
 
-def fetch_input(year: str, day: str) -> List[str]:
-    input_url = f"https://adventofcode.com/{year}/day/{day}/input"
-    token = open(f"{os.path.dirname(os.path.abspath(__file__))}/.token").readline().strip()
-    response = requests.get(input_url, cookies={"session": token})
-    return response.text.split("\n")
+def get_input_data() -> List[str]:
+    calling_script = sys.argv[0]
+    script_dir = os.path.dirname(calling_script)
+    year = os.path.basename(script_dir)
+    day = os.path.basename(calling_script).split("p")[0][1:]
+
+    data_file = f"{script_dir}/d{day}.data"
+    if not os.path.exists(data_file):
+        data_url = f"https://adventofcode.com/{year}/day/{day}/input"
+        token = open(f"{os.path.dirname(os.path.abspath(__file__))}/.token").readline().strip()
+        response = requests.get(data_url, cookies={"session": token}, timeout=5)
+        with open(data_file, "w") as file:
+            file.write(response.text)
+
+    return open(data_file).read().splitlines()
 
 
 @dataclass
@@ -57,10 +67,7 @@ def parse_input(config: ParsingConfig, example_data: str = None):
         if data[-1] == "":
             data = data[:-1]
     else:
-        calling_script = sys.argv[0]
-        year = os.path.basename(os.path.dirname(calling_script))
-        day = os.path.basename(calling_script).split("p")[0][1:]
-        data = fetch_input(year, day)
+        data = get_input_data()
 
     records = []
     multi_line_vals = []
