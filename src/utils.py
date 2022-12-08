@@ -81,6 +81,8 @@ def parse_input(config: ParsingConfig, example_data: str = None):
             vals = [line]
         elif config.field_separator is None:
             vals = line.split()
+        elif config.field_separator == "":
+            vals = list(line)  # splits a string into a list of chars
         else:
             vals = line.split(config.field_separator)
 
