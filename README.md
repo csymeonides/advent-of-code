@@ -17,5 +17,6 @@ Fill in:
 Running the script will:
 * Check that your `solve` function works as expected on the `example_data`
 * Download the actual input data using your token, run `solve` on it and print the answer
+* Print timings for each calculation
 
 Once finished with part 1, make a copy of this file as `dNp2.py` and adjust as necessary.

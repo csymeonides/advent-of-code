@@ -113,21 +113,23 @@ def parse_input(config: ParsingConfig, example_data: str = None):
     return records
 
 
-class Timer:
-    def __init__(self):
-        self.total_time = 0
-
-    @contextmanager
-    def time(self):
-        start_time = time.time()
+@contextmanager
+def timer(label):
+    start_time = time.time()
+    try:
         yield
-        self.total_time += (time.time() - start_time)
+    finally:
+        elapsed = (time.time() - start_time)
+        print(f"{label} took {elapsed:.1}s to solve")
 
 
 def check_example_and_get_actual_answer(example_data, example_answer, parsing_config, solve):
     example_data = parse_input(parsing_config, example_data=example_data)
-    actual = solve(example_data)
-    assert example_answer == actual, f"Expected {example_answer} but got {actual}"
+    with timer("Example"):
+        actual = solve(example_data)
+        assert example_answer == actual, f"Expected {example_answer} but got {actual}"
 
     real_data = parse_input(parsing_config)
-    print(solve(real_data))
+    with timer("Real"):
+        answer = solve(real_data)
+    print(f"Answer: {answer}")
