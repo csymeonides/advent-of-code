@@ -4,6 +4,8 @@
 * Login to https://adventofcode.com/
 * Use your browser DevTools to copy your session token from your cookies
 * Paste it into a file called `src/.token`
+* `pip install requests` if you don't have it already
+* Make sure the repo root directory is in your `PYTHONPATH` 
 
 ## Development
 To start working on the puzzle for year `Y` day `N`, make a copy of `src/template.py` and store it as `src/Y/dNp1.py`.
