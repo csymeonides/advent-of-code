@@ -1,6 +1,6 @@
 from typing import Dict
 
-from src.utils import check_example_and_get_actual_answer, ParsingConfig
+from src.utils import run, ParsingConfig
 
 example_answer = 95437
 
@@ -96,4 +96,4 @@ def solve(data):
 
 
 if __name__ == "__main__":
-    check_example_and_get_actual_answer(example_data, example_answer, parsing_config, solve)
+    run(example_data, example_answer, parsing_config, solve)
