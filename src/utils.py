@@ -125,8 +125,8 @@ def timer(label):
     try:
         yield
     finally:
-        elapsed = (time.time() - start_time)
-        print(f"{label} took {elapsed:.1}s to solve")
+        elapsed = time.time() - start_time
+        print(f"{label} took {elapsed:.1f}s to solve")
 
 
 def prepare_example_data(example_data: str) -> List[str]:
