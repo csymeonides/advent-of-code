@@ -38,8 +38,6 @@ class Board:
             x += x_inc
             y += y_inc
 
-        return self
-
     def mark(self, point):
         count = self.counts.get(point, 0)
         self.counts[point] = count + 1
@@ -52,8 +50,8 @@ parsing_config = ParsingConfig(
 )
 
 
-def solve(data):
-    counts = data[0].counts
+def solve(board: Board):
+    counts = board.counts
     return len([_ for _, count in counts.items() if count >= 2])
 
 

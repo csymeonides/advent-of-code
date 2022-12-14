@@ -28,13 +28,7 @@ def get_value(char: str):
 
 
 parsing_config = ParsingConfig(
-    # parser_class=None,
     parser_func=get_overlap_priority,
-    # field_separator=",",
-    # value_converter=int,
-    # single_field=True,
-    # multi_line=True,
-    # strip=False,
 )
 
 

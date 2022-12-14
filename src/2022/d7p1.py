@@ -53,7 +53,6 @@ class Sizer:
                 self.ls_dir.add_subdir(line[1])
             else:
                 self.ls_dir.add_file(int(line[0]))
-        return self
 
     def fix_sizes(self):
         while True:
@@ -89,8 +88,7 @@ parsing_config = ParsingConfig(
 )
 
 
-def solve(data):
-    sizer = data[0]
+def solve(sizer: Sizer):
     sizer.fix_sizes()
     return sum(d.file_size for d in sizer.tree.values() if d.file_size <= 100000)
 

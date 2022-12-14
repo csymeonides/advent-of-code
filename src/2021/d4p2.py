@@ -28,6 +28,7 @@ example_data = """
 class Bingo:
     def __init__(self):
         self.numbers = None
+        self.boards = []
 
     def parse(self, record):
         if self.numbers:
@@ -36,10 +37,9 @@ class Bingo:
                 board.mark(n)
                 if board.has_bingo():
                     break
-            return board
+            self.boards.append(board)
         else:
             self.numbers = [int(n) for n in record[0][0].split(",")]
-            return self.numbers
 
 
 class Board:
@@ -71,8 +71,8 @@ parsing_config = ParsingConfig(
 )
 
 
-def solve(data):
-    winner = max(data[1:], key=lambda b: b.nums_to_win)
+def solve(bingo: Bingo):
+    winner = max(bingo.boards, key=lambda b: b.nums_to_win)
     return winner.get_score()
 
 

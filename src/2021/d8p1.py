@@ -21,13 +21,8 @@ def parse(first, second):
 
 
 parsing_config = ParsingConfig(
-    # parser_class=None,
     parser_func=parse,
     field_separator=" | ",
-    # value_converter=int,
-    # single_field=True,
-    # multi_line=True,
-    # strip=False,
 )
 
 

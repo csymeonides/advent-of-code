@@ -67,8 +67,10 @@ def parse_input(config: ParsingConfig, data: List[str]):
     if config.parser_class is not None and config.parser_func is not None:
         raise ValueError("You cannot specify both parser_func and parser_class")
 
+    parser = None
     if config.parser_class is not None:
-        parser_func = config.parser_class().parse
+        parser = config.parser_class()
+        parser_func = parser.parse
     elif config.parser_func is not None:
         parser_func = config.parser_func
     else:
@@ -116,7 +118,7 @@ def parse_input(config: ParsingConfig, data: List[str]):
         record = parser_func(multi_line_vals)
         records.append(record)
 
-    return records
+    return parser or records
 
 
 @contextmanager

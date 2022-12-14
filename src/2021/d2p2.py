@@ -35,9 +35,8 @@ parsing_config = ParsingConfig(
 )
 
 
-def solve(data):
-    (x, y) = data[-1]
-    return x * y
+def solve(sub: Sub):
+    return sub.x * sub.y
 
 
 if __name__ == "__main__":

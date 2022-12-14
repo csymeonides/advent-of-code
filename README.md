@@ -14,7 +14,7 @@ Fill in:
 * `example_answer`
 * `example_data`
 * `parsing_config` to customise how the input data is parsed (see `ParsingConfig` for details)
-* `solve` which is called with the parsed input data (list of records) and must return the answer 
+* `solve` which must return the answer when called with the parsed input data (list of records) OR the parser object (if you have specified a `ParsingConfig.parser_class`) 
 
 Running the script will:
 * Check that your `solve` function works as expected on the `example_data`

@@ -33,7 +33,6 @@ class Board:
             y = start[Y]
             for x in range(min(start[X], end[X]), max(start[X], end[X]) + 1):
                 self.mark((x, y))
-        return self
 
     def mark(self, point):
         count = self.counts.get(point, 0)
@@ -47,8 +46,8 @@ parsing_config = ParsingConfig(
 )
 
 
-def solve(data):
-    counts = data[0].counts
+def solve(board: Board):
+    counts = board.counts
     return len([_ for _, count in counts.items() if count >= 2])
 
 

@@ -39,7 +39,6 @@ class Crane:
                 crates = self.state[source_stack][:n_crates]
                 self.state[source_stack] = self.state[source_stack][n_crates:]
                 self.state[dest_stack] = crates + self.state[dest_stack]
-        return self.state
 
 
 parsing_config = ParsingConfig(
@@ -50,8 +49,8 @@ parsing_config = ParsingConfig(
 )
 
 
-def solve(data):
-    return "".join(stack[0] for stack in data[0])
+def solve(crane: Crane):
+    return "".join(stack[0] for stack in crane.state)
 
 
 if __name__ == "__main__":

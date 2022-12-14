@@ -14,13 +14,7 @@ b-end
 
 
 parsing_config = ParsingConfig(
-    # parser_class=None,
-    # parser_func=lambda *args: tuple(args),
     field_separator="-",
-    # value_converter=int,
-    # single_field=True,
-    # multi_line=True,
-    # strip=False,
 )
 
 
