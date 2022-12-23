@@ -1,5 +1,3 @@
-import math
-
 from utils import run, ParsingConfig
 
 example_answer = 1651
@@ -71,7 +69,7 @@ def solve(data):
                     print("New best!", best, new_open_valves, "Queue size:", len(queue))
                 else:
                     theoretical_max_score = new_score + sum(
-                        flow_rates[other2] * (new_time - other_distance - 1)
+                        flow_rates[other2] * max(0, (new_time - other_distance - 1))
                         for other2, other_distance in distances[other].items()
                         if other2 not in new_open_valves
                     )
