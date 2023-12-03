@@ -19,9 +19,10 @@ Fill in:
 Running this file will:
 * Check that your `solve` function works as expected on the `example_data` (i.e. result matches `example_answer`)
 * Download the actual input data (based on the year and day in the filename) using your token, run `solve` on it and print the answer
-  * The data will be stored in `src/solutions/{Y}/d{D}.data`
-* Print timings for each calculation
-
-Once you have solved the puzzle, you can fill in `real_answer` and then try to improve your time - the script will check that your result still correct.
+  * The data will be stored in `src/solutions/{Y}/d{D}.data` to avoid re-fetching every time
+* Submit your answer to the server and print the important bit from the response
+  * If your answer is correct, fill in `real_answer` in the script to avoid re-submitting and getting blocked by the server
+* Print timings for each calculation 
+  * If you fill in `real_answer` you can try to improve your time and the script will check that your result still correct.
 
 Once finished with part 1, create file `d{D}p2.py` and adjust as necessary.

@@ -2,7 +2,7 @@ import time
 from contextlib import contextmanager
 from typing import List
 
-from utils.fetcher import get_input_data
+from utils.fetcher import get_input_data, check_real_answer
 from utils.parser import parse_input
 
 
@@ -35,6 +35,8 @@ def _solve_and_check(solve, label, data, expected):
         answer = solve(data)
     if expected is None:
         print(f"Answer: {answer}")
+        if label == "Real":
+            check_real_answer(answer)
     else:
         assert expected == answer, f"Expected {expected} but got {answer}"
         print(f"CORRECT! Answer: {answer}")
