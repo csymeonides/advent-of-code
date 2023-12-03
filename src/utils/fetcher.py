@@ -39,8 +39,7 @@ def get_input_data() -> List[str]:
             with open(data_file, "w") as file:
                 file.write(response.text)
         else:
-            print(f"Error getting input data:\n\n{response.text}")
-            return []
+            raise RuntimeError(f"Error getting input data:\n\n{response.text}")
 
     return open(data_file).read().splitlines()
 
