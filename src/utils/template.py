@@ -21,8 +21,11 @@ def solve(data):
     return len(data)
 
 
-real_answer = None
-
-
 if __name__ == "__main__":
-    run(example_data, example_answer, parsing_config, solve, real_answer)
+    run(
+        example_data=example_data,
+        example_answer=example_answer,
+        parsing_config=parsing_config,
+        solve=solve,
+        # real_answer=None,
+    )
