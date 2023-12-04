@@ -1,4 +1,5 @@
 from utils import run, ParsingConfig
+from utils.utils import to_tuple
 
 example_answer = 64
 
@@ -20,7 +21,7 @@ example_data = """
 
 
 parsing_config = ParsingConfig(
-    parser_func=lambda *args: tuple(args),
+    parser_func=to_tuple,
     field_separator=",",
     value_converter=int,
 )
@@ -44,7 +45,7 @@ def solve(data):
     return total
 
 
-real_answer = None
+real_answer = 3522
 
 
 if __name__ == "__main__":

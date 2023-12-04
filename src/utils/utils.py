@@ -52,3 +52,7 @@ def run(example_data, example_answer, parsing_config, solve, real_answer=None):
 
     real_data = parse_input(parsing_config, data=raw_real_data)
     _solve_and_check(solve, "Real", real_data, real_answer)
+
+
+def to_tuple(*args):
+    return tuple(args)
