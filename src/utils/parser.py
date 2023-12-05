@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass
 from typing import List, Union, Optional, Type, Callable
 
@@ -60,7 +61,7 @@ def parse_input(config: ParsingConfig, data: List[str]):
         elif config.field_separator == "":
             vals = list(line)  # splits a string into a list of chars
         else:
-            vals = line.split(config.field_separator)
+            vals = re.split(config.field_separator, line)
 
         vals = apply_converter(vals)
 
