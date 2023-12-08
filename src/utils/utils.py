@@ -30,19 +30,21 @@ def prepare_example_data(example_data: str) -> List[str]:
     return data
 
 
-def _solve_and_check(solve, label, data, expected):
+def _solve_and_check(solve, label, data, expected, wrong_answers=None):
     with timer(label):
         answer = solve(data)
     if expected is None:
         print(f"Answer: {answer}")
-        if label == "Real":
+        if wrong_answers and answer in wrong_answers:
+            print("(this is wrong, you've tried it before)")
+        elif label == "Real":
             check_real_answer(answer)
     else:
         assert expected == answer, f"Expected {expected} but got {answer}"
         print(f"CORRECT! Answer: {answer}")
 
 
-def run(example_data, example_answer, parsing_config, solve, real_answer=None):
+def run(example_data, example_answer, parsing_config, solve, real_answer=None, wrong_answers=None):
     raw_real_data = get_input_data()
 
     example_data = parse_input(parsing_config, data=prepare_example_data(example_data))
@@ -51,7 +53,7 @@ def run(example_data, example_answer, parsing_config, solve, real_answer=None):
     print()
 
     real_data = parse_input(parsing_config, data=raw_real_data)
-    _solve_and_check(solve, "Real", real_data, real_answer)
+    _solve_and_check(solve, "Real", real_data, real_answer, wrong_answers)
 
 
 def to_tuple(*args):
