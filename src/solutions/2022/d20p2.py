@@ -1,6 +1,6 @@
 from typing import List
 
-from utils import run, ParsingConfig
+from utils import run, ParsingConfig, Example
 
 example_answer = 1623178306
 
@@ -50,7 +50,8 @@ def solve(data: List[int]) -> int:
 
 if __name__ == "__main__":
     run(
-        example_data, example_answer, parsing_config, solve,
-        wrong_answers=[-4258, -1624],
+        examples=[Example(answer=example_answer, data=example_data)],
+        parsing_config=parsing_config,
+        solve=solve,
         real_answer=2897373276210,
     )

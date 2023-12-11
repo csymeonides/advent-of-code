@@ -1,9 +1,12 @@
-from utils import run, ParsingConfig
+from utils import run, ParsingConfig, Example, Example
 
-example_answer = None
-
-example_data = """
+examples = [
+    Example(
+        answer=None,
+        data="""
 """
+    )
+]
 
 
 parsing_config = ParsingConfig(
@@ -23,9 +26,9 @@ def solve(data):
 
 if __name__ == "__main__":
     run(
-        example_data=example_data,
-        example_answer=example_answer,
+        examples=examples,
         parsing_config=parsing_config,
         solve=solve,
+        # wrong_answers=[],
         # real_answer=None,
     )

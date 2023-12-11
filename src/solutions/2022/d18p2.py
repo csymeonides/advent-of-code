@@ -1,4 +1,4 @@
-from utils import run, ParsingConfig
+from utils import run, ParsingConfig, Example
 from utils.utils import to_tuple
 
 example_answer = 58
@@ -68,4 +68,4 @@ real_answer = 2074
 
 
 if __name__ == "__main__":
-    run(example_data, example_answer, parsing_config, solve, real_answer)
+    run([Example(answer=example_answer, data=example_data)], parsing_config, solve, real_answer)

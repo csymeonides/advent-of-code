@@ -2,7 +2,7 @@ import math
 from dataclasses import dataclass
 from typing import List, Tuple, Optional
 
-from utils import run, ParsingConfig
+from utils import run, ParsingConfig, Example
 
 example_answer = 46
 
@@ -148,8 +148,7 @@ def solve(mapper: Mapper):
 
 if __name__ == "__main__":
     run(
-        example_data=example_data,
-        example_answer=example_answer,
+        examples=[Example(answer=example_answer, data=example_data)],
         parsing_config=parsing_config,
         solve=solve,
         real_answer=26829166,

@@ -1,9 +1,16 @@
 import time
 from contextlib import contextmanager
+from dataclasses import dataclass
 from typing import List
 
 from utils.fetcher import get_input_data, check_real_answer
 from utils.parser import parse_input
+
+
+@dataclass
+class Example:
+    answer: int
+    data: str
 
 
 def check(answer_function, input, expected):
@@ -44,13 +51,13 @@ def _solve_and_check(solve, label, data, expected, wrong_answers=None):
         print(f"CORRECT! Answer: {answer}")
 
 
-def run(example_data, example_answer, parsing_config, solve, real_answer=None, wrong_answers=None):
+def run(examples: List[Example], parsing_config, solve, real_answer=None, wrong_answers=None):
     raw_real_data = get_input_data()
 
-    example_data = parse_input(parsing_config, data=prepare_example_data(example_data))
-    _solve_and_check(solve, "Example", example_data, example_answer)
-
-    print()
+    for i, example in enumerate(examples):
+        example_data = parse_input(parsing_config, data=prepare_example_data(example.data))
+        _solve_and_check(solve, f"Example {i}", example_data, example.answer)
+        print()
 
     real_data = parse_input(parsing_config, data=raw_real_data)
     _solve_and_check(solve, "Real", real_data, real_answer, wrong_answers)

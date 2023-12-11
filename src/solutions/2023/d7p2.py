@@ -2,7 +2,7 @@ from itertools import combinations_with_replacement
 from dataclasses import dataclass
 from typing import List
 
-from utils import run, ParsingConfig
+from utils import run, ParsingConfig, Example
 
 example_answer = 5905
 
@@ -100,8 +100,7 @@ def solve(hands: List[Hand]):
 
 if __name__ == "__main__":
     run(
-        example_data=example_data,
-        example_answer=example_answer,
+        examples=[Example(answer=example_answer, data=example_data)],
         parsing_config=parsing_config,
         solve=solve,
         wrong_answers=[

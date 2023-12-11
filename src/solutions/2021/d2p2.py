@@ -1,4 +1,4 @@
-from utils import run, ParsingConfig
+from utils import run, ParsingConfig, Example
 
 example_answer = 900
 
@@ -40,4 +40,4 @@ def solve(sub: Sub):
 
 
 if __name__ == "__main__":
-    run(example_data, example_answer, parsing_config, solve)
+    run([Example(answer=example_answer, data=example_data)], parsing_config, solve)
