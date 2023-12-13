@@ -21,7 +21,7 @@ Running this file will:
 * Download the actual input data (based on the year and day in the filename) using your token, run `solve` on it and print the answer
   * The data will be stored in `src/solutions/{Y}/d{D}.data` to avoid re-fetching every time
 * Submit your answer to the server and print the important bit from the response
-  * If your answer is correct, fill in `real_answer` in the script to avoid re-submitting and getting blocked by the server
+  * If your answer is correct, fill in `real_answer` in the script. If it's wrong, fill in `too_high` or `too_low` instead. This will avoid re-submitting to the server unnecessarily if you re-run the script.
 * Print timings for each calculation 
   * If you fill in `real_answer` you can try to improve your time and the script will check that your result still correct.
 

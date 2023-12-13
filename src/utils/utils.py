@@ -37,21 +37,24 @@ def prepare_example_data(example_data: str) -> List[str]:
     return data
 
 
-def _solve_and_check(solve, label, data, expected, wrong_answers=None):
+def _solve_and_check(solve, label, data, expected, too_high=None, too_low=None):
     with timer(label):
         answer = solve(data)
     if expected is None:
         print(f"Answer: {answer}")
-        if wrong_answers and answer in wrong_answers:
-            print("(this is wrong, you've tried it before)")
-        elif label == "Real":
-            check_real_answer(answer)
+        if label == "Real":
+            if too_high is not None and answer >= too_high:
+                print("Too high!")
+            elif too_low is not None and answer <= too_low:
+                print("Too low!")
+            else:
+                check_real_answer(answer)
     else:
         assert expected == answer, f"Expected {expected} but got {answer}"
         print(f"CORRECT! Answer: {answer}")
 
 
-def run(examples: List[Example], parsing_config, solve, real_answer=None, wrong_answers=None):
+def run(examples: List[Example], parsing_config, solve, real_answer=None, too_high=None, too_low=None):
     raw_real_data = get_input_data()
 
     for i, example in enumerate(examples):
@@ -60,7 +63,7 @@ def run(examples: List[Example], parsing_config, solve, real_answer=None, wrong_
         print()
 
     real_data = parse_input(parsing_config, data=raw_real_data)
-    _solve_and_check(solve, "Real", real_data, real_answer, wrong_answers)
+    _solve_and_check(solve, "Real", real_data, real_answer, too_high, too_low)
 
 
 def to_tuple(*args):

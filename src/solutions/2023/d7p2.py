@@ -103,8 +103,5 @@ if __name__ == "__main__":
         examples=[Example(answer=example_answer, data=example_data)],
         parsing_config=parsing_config,
         solve=solve,
-        wrong_answers=[
-            254423099,  # too high
-        ],
         real_answer=253907829,
     )
